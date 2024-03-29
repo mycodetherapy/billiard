@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import "./Billiards.css";
 import Ball from "./Ball";
 import { BallMenu } from "../BallMenu/BallMenu";
+import { ActionButton } from "../Buttons/ActionButton";
 
 const Billiards: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -47,10 +48,10 @@ const Billiards: React.FC = () => {
   const handleMouseMove = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const rect = canvas.getBoundingClientRect();
     const mouseX = event.clientX - rect.left;
     const mouseY = event.clientY - rect.top;
+    const currentTime = performance.now();
 
     balls.forEach((ball) => {
       if (ball.isClicked(mouseX, mouseY)) {
@@ -110,9 +111,10 @@ const Billiards: React.FC = () => {
           position={{ posX: menuPosition.x, posY: menuPosition.y }}
         />
       )}
-      <button className="ball__edit" onClick={handleModeClick}>
-        {isEdit ? "Play" : "Edit mode"}
-      </button>
+      <ActionButton
+        buttonText={isEdit ? "Play" : "Edit mode"}
+        action={handleModeClick}
+      />
     </div>
   );
 };
