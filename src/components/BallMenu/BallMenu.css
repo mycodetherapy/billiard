@@ -1,0 +1,23 @@
+.menu {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 3px;
+}
+
+.menu__item {
+  border-bottom: 1px solid black;
+  padding: 3px 8px;
+  text-align: left;
+  cursor: pointer;
+  background-color: #dcdcdc;
+}
+
+.menu__item:hover {
+  background-color: #c7d0cc;
+}
+
+.menu:last-child {
+  border: none;
+}
