@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/billiard/static/css/main.e09f3c0f.css",
+    "main.js": "/billiard/static/js/main.bd9f308c.js",
+    "static/js/453.1990e7e4.chunk.js": "/billiard/static/js/453.1990e7e4.chunk.js",
+    "index.html": "/billiard/index.html",
+    "main.e09f3c0f.css.map": "/billiard/static/css/main.e09f3c0f.css.map",
+    "main.bd9f308c.js.map": "/billiard/static/js/main.bd9f308c.js.map",
+    "453.1990e7e4.chunk.js.map": "/billiard/static/js/453.1990e7e4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e09f3c0f.css",
+    "static/js/main.bd9f308c.js"
+  ]
+}
