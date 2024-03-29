@@ -1,9 +1,13 @@
 .billiards {
   position: relative;
   max-width: 400;
-}
 
-.billiards-canvas {
+  background-color: #6d6552;
+}
+.head {
+  margin: 0;
+}
+.billiards__canvas {
   border: 2px solid #000;
   background-color: #008000;
   display: flex;

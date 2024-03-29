@@ -3,6 +3,7 @@ import "./Billiards.css";
 import Ball from "./Ball";
 import { BallMenu } from "../BallMenu/BallMenu";
 import { ActionButton } from "../Buttons/ActionButton";
+import { IPosition } from "../types/types";
 
 const Billiards: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -19,12 +20,13 @@ const Billiards: React.FC = () => {
 
   const [balls, setBalls] = useState<Ball[]>(initBalls);
   const [selectedBall, setSelectedBall] = useState<Ball | null>(null);
-  const [menuPosition, setMenuPosition] = useState<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
+  const [menuPosition, setMenuPosition] = useState<IPosition>({
+    posX: 0,
+    posY: 0,
   });
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const headHeight = 40;
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -51,7 +53,6 @@ const Billiards: React.FC = () => {
     const rect = canvas.getBoundingClientRect();
     const mouseX = event.clientX - rect.left;
     const mouseY = event.clientY - rect.top;
-    const currentTime = performance.now();
 
     balls.forEach((ball) => {
       if (ball.isClicked(mouseX, mouseY)) {
@@ -79,8 +80,10 @@ const Billiards: React.FC = () => {
         setShowMenu(!showMenu);
         setSelectedBall(ball);
         if (rect) {
-          setMenuPosition({ x: rect.left + ball.x, y: rect.top + ball.y });
-          //setMenuPosition({ x: rect.left + mouseX, y: rect.top + mouseY });
+          setMenuPosition({
+            posX: rect.left + ball.x,
+            posY: rect.top + ball.y + headHeight,
+          });
         }
       }
     });
@@ -96,9 +99,10 @@ const Billiards: React.FC = () => {
 
   return (
     <div className="billiards">
+      <h1 className="head">Billiard</h1>
       <canvas
         ref={canvasRef}
-        className="billiards-canvas"
+        className="billiards__canvas"
         width={400}
         height={800}
         onClick={isEdit ? handleMouseClick : undefined}
@@ -108,7 +112,7 @@ const Billiards: React.FC = () => {
         <BallMenu
           items={ballColors}
           action={changeColorBall}
-          position={{ posX: menuPosition.x, posY: menuPosition.y }}
+          position={{ posX: menuPosition.posX, posY: menuPosition.posY }}
         />
       )}
       <ActionButton

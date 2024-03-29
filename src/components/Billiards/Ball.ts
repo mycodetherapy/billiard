@@ -69,9 +69,6 @@ class Ball {
 
         // Если шары столкнулись
         if (distance < this.radius + otherBall.radius) {
-          // Рассчитываем угол столкновения
-          //const angle = Math.atan2(dy, dx);
-
           const minDistance = this.radius + otherBall.radius;
           if (distance < minDistance) {
             const angle = Math.atan2(dy, dx);

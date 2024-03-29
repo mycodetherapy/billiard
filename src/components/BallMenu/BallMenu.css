@@ -8,7 +8,9 @@
 
 .menu__item {
   border-bottom: 1px solid black;
-  padding: 3px 8px;
+  padding: 3px 16px;
+  min-width: 60px;
+  font-size: 18px;
   text-align: left;
   cursor: pointer;
   background-color: #dcdcdc;

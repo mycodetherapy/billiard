@@ -1,13 +1,11 @@
 import React from "react";
 import "./BallMenu.css";
+import { IPosition } from "../types/types";
 
 interface IBallMenu {
   items: string[];
   action: (arg: string) => void;
-  position: {
-    posX: number;
-    posY: number;
-  };
+  position: IPosition;
 }
 
 export const BallMenu: React.FC<IBallMenu> = ({ items, action, position }) => {
