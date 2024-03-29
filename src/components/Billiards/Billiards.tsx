@@ -65,28 +65,25 @@ const Billiards: React.FC = () => {
   };
 
   const handleMouseClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    if (!isEdit) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const rect = canvas.getBoundingClientRect();
     const mouseX = event.clientX - rect.left;
     const mouseY = event.clientY - rect.top;
-    setShowMenu(!showMenu);
 
     balls.forEach((ball) => {
       if (ball.isClicked(mouseX, mouseY)) {
-        handleBallClick(ball);
+        setShowMenu(!showMenu);
         setSelectedBall(ball);
-
         if (rect) {
           setMenuPosition({ x: rect.left + ball.x, y: rect.top + ball.y });
+          //setMenuPosition({ x: rect.left + mouseX, y: rect.top + mouseY });
         }
       }
     });
-  };
-
-  const handleBallClick = (clickedBall: Ball) => {
-    console.log("Clicked ball:", clickedBall);
+    showMenu && setShowMenu(!showMenu);
   };
 
   const handleModeClick = () => setIsEdit(!isEdit);
