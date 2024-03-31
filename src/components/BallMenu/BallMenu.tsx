@@ -1,6 +1,6 @@
 import React from "react";
 import "./BallMenu.css";
-import { IPosition } from "../types/types";
+import { IPosition } from "../Types/types";
 
 interface IBallMenu {
   items: string[];
