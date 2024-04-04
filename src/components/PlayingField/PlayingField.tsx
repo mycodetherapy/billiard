@@ -7,7 +7,6 @@ import { useGlobalContext } from "../Contexts/UseGlobalContext";
 export const PlayingField: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const {
-    selectedBall,
     setSelectedBall,
     setSelectedPosition,
     isEdit,
@@ -28,7 +27,7 @@ export const PlayingField: React.FC = () => {
         context.clearRect(0, 0, canvas.width, canvas.height);
         balls.forEach((ball) => {
           ball.draw(context);
-          ball.update(canvas.width, canvas.height, balls, selectedBall);
+          ball.update(canvas.width, canvas.height, balls, ball);
         });
         requestAnimationFrame(render);
       };
@@ -50,7 +49,7 @@ export const PlayingField: React.FC = () => {
         // Изменение скорости шара в зависимости от положения мыши
         ball.vx = speed * Math.cos(angle);
         ball.vy = speed * Math.sin(angle);
-        ball.update(canvas.width, canvas.height, balls, selectedBall);
+        ball.update(canvas.width, canvas.height, balls, ball);
       }
     });
   };

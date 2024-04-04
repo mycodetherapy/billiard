@@ -5,7 +5,6 @@ class Ball {
   color: string;
   vx: number = 0;
   vy: number = 0;
-  movementTime: number = 0;
 
   constructor(
     x: number,
@@ -13,8 +12,7 @@ class Ball {
     radius: number,
     color: string,
     vx: number = 0,
-    vy: number = 0,
-    movementTime: number = 0
+    vy: number = 0
   ) {
     this.x = x;
     this.y = y;
@@ -22,7 +20,6 @@ class Ball {
     this.color = color;
     this.vx = vx;
     this.vy = vy;
-    this.movementTime = movementTime;
   }
 
   draw(context: CanvasRenderingContext2D) {
